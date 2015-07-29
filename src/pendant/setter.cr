@@ -30,13 +30,18 @@ module Pendant::Setter
           {% end %}
         end
 
+        @@%keys = nil
         {% if @type.methods.any?{|m|m.name.stringify == "__pendant_getter_keys"} %}
           def keys
-            self.__pendant_setter_keys.concat(self.__pendant_getter_keys).uniq
+            return @@%keys.not_nil! if @@%keys
+            @@%keys = self.__pendant_setter_keys.concat(self.__pendant_getter_keys).uniq
+            @@%keys.not_nil!
           end
         {% else %}
           def keys
-            self.__pendant_setter_keys
+            return @@%keys.not_nil! if @@%keys
+            @@%keys = self.__pendant_setter_keys
+            @@%keys.not_nil!
           end
         {% end %}
       end
