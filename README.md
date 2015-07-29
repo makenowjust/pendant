@@ -20,25 +20,26 @@ end
 require "pendant"
 
 class Accessory
-  # include pendant module
-  # it defines `Accessory#[]`, `Accessory#[]?`, `Accessory#[]=` and
-  # `Accessory#has_key?` automatically.
-  include Pendant::Property
-
   # define properties and initializer
   property name, owner
 
   def initialize(@name, @owner); end
+
+  # include pendant module
+  # it defines `Accessory#[]`, `Accessory#[]?`, `Accessory#[]=` and
+  # `Accessory#keys` automatically.
+  include Pendant::Property
 end
 
 # create a new accessory
-pendant = Accessor.new(
+pendant = Accessory.new(
   name  = "pendant",
   owner = "Alice",
 )
 
 # it can access via `[]` method
 puts pendant[:name]
+puts pendant["owner"]
 ```
 
 ## Development
