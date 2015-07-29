@@ -16,7 +16,7 @@ module Pendant::Setter
             super
           {% else %}
             # NOTE: `MissingKey` is deprected.  If next version Crystal is released, it renames to `KeyError`.
-            raise MissingKey.new("")
+            raise MissingKey.new("Missing setter value: #{key.inspect}")
           {% end %}
         end
 
