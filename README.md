@@ -45,7 +45,7 @@ puts pendant["owner"]
 ## Development
 
 ```console
-crystal spec spec/spec.cr
+$ crystal spec spec/spec.cr
 ```
 
 ## Contributing
