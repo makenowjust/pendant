@@ -1,6 +1,13 @@
 module Pendant::Setter
+  def []=(key, value)
+  end
+
+  def keys
+  end
+
   # :nodoc:
   macro define_pendant_setters
+    # :nodoc:
     module {{ "PendantSetter".id }}%mod
       macro included
         def []=(key, value)
@@ -20,6 +27,7 @@ module Pendant::Setter
           {% end %}
         end
 
+        # :nodoc:
         def __pendant_setter_keys
           m = {{ @type.methods.select do |m|
             m.args.length == 1 && m.name.stringify.ends_with?("=") && m.name.stringify != "keys" && !m.name.stringify.starts_with?("__")

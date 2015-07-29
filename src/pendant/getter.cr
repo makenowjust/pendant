@@ -1,6 +1,16 @@
 module Pendant::Getter
+  def []?(key)
+  end
+
+  def [](key)
+  end
+
+  def keys
+  end
+
   # :nodoc:
   macro define_pendant_getters
+    # :nodoc:
     module {{ "PendantGetter".id }}%mod
       macro included
         def []?(key)
@@ -34,6 +44,7 @@ module Pendant::Getter
           {% end %}
         end
 
+        # :nodoc:
         def __pendant_getter_keys
           m = {{ @type.methods.select do |m|
             m.args.length == 0 && m.name.stringify != "keys" && !m.name.stringify.starts_with?("__")
