@@ -15,14 +15,6 @@ class AccessorySetter
 end
 
 describe Pendant::Setter do
-  it "should have `[]=` method" do
-    AccessorySetter.new(1, 2).responds_to?(:[]=).should be_true
-  end
-
-  it "should have `keys` method" do
-    AccessorySetter.new(1, 2).responds_to?(:keys).should be_true
-  end
-
   it "should not have `[]` method" do
     AccessorySetter.new(1, 2).responds_to?(:[]).should be_false
   end

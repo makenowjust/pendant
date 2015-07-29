@@ -29,22 +29,6 @@ class AccessoryProperty2 < AccessoryProperty
 end
 
 describe Pendant::Property do
-  it "should have `[]` method" do
-    AccessoryProperty.new(1, 2).responds_to?(:[]).should be_true
-  end
-
-  it "should have `[]?` method" do
-    AccessoryProperty.new(1, 2).responds_to?(:[]?).should be_true
-  end
-
-  it "should have `keys` method" do
-    AccessoryProperty.new(1, 2).responds_to?(:keys).should be_true
-  end
-
-  it "should have `[]=` method" do
-    AccessoryProperty.new(1, 2).responds_to?(:[]=).should be_true
-  end
-
   it "should return a value via `[]` with Symbol" do
     accessory = AccessoryProperty.new(1, 2)
     accessory[:a].should eq 1
