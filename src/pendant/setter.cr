@@ -15,6 +15,7 @@ module Pendant::Setter
           {% if @type.superclass && @type.superclass.methods.any?{|m| m.name.stringify == "[]=" && m.args.length == 2} %}
             super
           {% else %}
+            # NOTE: `MissingKey` is deprected.  If next version Crystal is released, it renames to `KeyError`.
             raise MissingKey.new("")
           {% end %}
         end

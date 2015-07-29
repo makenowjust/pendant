@@ -29,6 +29,7 @@ module Pendant::Getter
           {% if @type.superclass && @type.superclass.methods.any?{|m| m.name.stringify == "[]?" && m.args.length == 1} %}
             super
           {% else %}
+            # NOTE: `MissingKey` is deprected.  If next version Crystal is released, it renames to `KeyError`.
             raise MissingKey.new("Missing getter value: #{key.inspect}")
           {% end %}
         end
