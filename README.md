@@ -44,7 +44,9 @@ puts pendant["owner"]
 
 ## Development
 
-TODO: Write instructions for development
+```console
+crystal spec spec/spec.cr
+```
 
 ## Contributing
 
