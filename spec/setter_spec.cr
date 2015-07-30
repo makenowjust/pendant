@@ -5,11 +5,11 @@ class AccessorySetter
 
   def initialize(@a, @b); end
 
-  def c=(c : {Int32, Int32})
-    @a, @b = c
+  def c=(c)
+    if c.is_a?({Int32, Int32})
+      @a, @b = c
+    end
   end
-
-  def c=(c); end
 
   include Pendant::Setter
 end
