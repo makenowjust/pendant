@@ -13,10 +13,7 @@ class Accessory
 end
 
 # create a new accessory
-pendant = Accessory.new(
-  name  = "pendant",
-  owner = "Alice",
-)
+pendant = Accessory.new("pendant", "Alice")
 
 # it can access via `[]` method
 puts pendant[:name]
