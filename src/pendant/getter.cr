@@ -1,5 +1,23 @@
 module Pendant::Getter
+  # Get a value calling `key()` method.
+  # If not define `key()`, it returns `nil`.
+  def []?(key); end
+
+  # Get a value calling `key()` method (strict).
+  # If not define `key()`, it raises `KeyError`.
+  def [](key); end
+
+  # It returns available keys.
+  # A method of keys have no argument (except `keys`).
+  def keys; end
+
+  # It defines `[]?`, `[]` and `keys` into your class directory.
+  # Included `Pendant::Getter`, it calls via hooks.
+  #
+  # Defining methods use methods information in the moment,
+  # so please call this macro if you define a new method after including.
   macro define_pendant_getters
+    # See `Pendant::Getter#[]?`
     def []?(key)
       {% for m in @type.methods %}
         {% if m.args.length == 0 && m.name.stringify != "keys" %}
@@ -16,6 +34,7 @@ module Pendant::Getter
       {% end %}
     end
 
+    # See `Pendant::Getter#[]`
     def [](key)
       {% for m in @type.methods %}
         {% if m.args.length == 0 && m.name.stringify != "keys" %}
@@ -33,6 +52,7 @@ module Pendant::Getter
     end
 
     @@%keys = nil
+    # See `Pendant::Getter#keys`
     def keys
       if keys = @@%keys
         keys
