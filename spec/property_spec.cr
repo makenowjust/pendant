@@ -47,14 +47,14 @@ describe Pendant::Property do
 
   it "should raise an error via `[]` with no existing Symbol" do
     accessory = AccessoryProperty.new(1, 2)
-    expect_raises MissingKey do
+    expect_raises KeyError do
       accessory[:e]
     end
   end
 
   it "should raise an error via `[]` with no existing String" do
     accessory = AccessoryProperty.new(1, 2)
-    expect_raises MissingKey do
+    expect_raises KeyError do
       accessory["e"]
     end
   end
@@ -111,14 +111,14 @@ describe Pendant::Property do
 
   it "should raise an error via `[]=` with no existing Symbol" do
     accessory = AccessoryProperty.new(1, 2)
-    expect_raises MissingKey do
+    expect_raises KeyError do
       accessory[:d] = 0
     end
   end
 
   it "should raise an error via `[]=` with no existing String" do
     accessory = AccessoryProperty.new(1, 2)
-    expect_raises MissingKey do
+    expect_raises KeyError do
       accessory["d"] = 0
     end
   end

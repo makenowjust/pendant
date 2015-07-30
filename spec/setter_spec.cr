@@ -49,14 +49,14 @@ describe Pendant::Setter do
 
   it "should raise an error via `[]=` with no existing Symbol" do
     accessory = AccessorySetter.new(1, 2)
-    expect_raises MissingKey do
+    expect_raises KeyError do
       accessory[:d] = 0
     end
   end
 
   it "should raise an error via `[]=` with no existing String" do
     accessory = AccessorySetter.new(1, 2)
-    expect_raises MissingKey do
+    expect_raises KeyError do
       accessory["d"] = 0
     end
   end
